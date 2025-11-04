@@ -6,7 +6,7 @@ services:
 
     # ポート
     ports:
-      - "8443:8443"
+      - "8350:8443"
 
     tty: true
 
@@ -36,13 +36,13 @@ services:
 
     # イメージ
     build:
-      context: ./frontend
+      context: ./front
       dockerfile: Dockerfile
       target: development-dependencies-env
 
     # ディレクトリ共有
     volumes:
-      - ./frontend:/app
+      - ./front:/app
 
     restart: always
 
