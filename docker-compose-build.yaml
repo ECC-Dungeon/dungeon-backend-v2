@@ -38,12 +38,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-      target: development-dependencies-env
-
-    # ディレクトリ共有
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      target: release
     
     # ttyを有効化
     tty: true
@@ -59,12 +54,8 @@ services:
     build:
       context: ./app
       dockerfile: dockerfile
-      target: Develop
-    
-    # コードを共有
-    volumes:
-      - ./app/src:/app/src
-    
+      target: release
+
     # 仮想端末を有効化
     tty: true
 
