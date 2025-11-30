@@ -12,6 +12,7 @@ openssl/jwtKeys/*
 
 # 自動ビルドフォルダ除外
 app/src/tmp/
+admin/src/tmp/
 
 # その他
 .DS_Store

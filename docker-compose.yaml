@@ -6,7 +6,7 @@ services:
 
     # ポート
     ports:
-      - "8443:8443"
+      - "8520:8443"
 
     tty: true
 
@@ -64,6 +64,48 @@ services:
     # コードを共有
     volumes:
       - ./app/src:/app/src
+    
+    # 仮想端末を有効化
+    tty: true
+
+    # 自動起動を有効化
+    restart: always
+
+  # admin コンテナ
+  admin:
+    # ホスト名指定
+    hostname: admin
+
+    # ビルド対象のdockerfileをしてい
+    build:
+      context: ./admin
+      dockerfile: dockerfile
+      target: Develop
+    
+    # コードを共有
+    volumes:
+      - ./admin/src:/app/src
+    
+    # 仮想端末を有効化
+    tty: true
+
+    # 自動起動を有効化
+    restart: always
+
+  # game コンテナ
+  game:
+    # ホスト名指定
+    hostname: game
+
+    # ビルド対象のdockerfileをしてい
+    build:
+      context: ./game
+      dockerfile: dockerfile
+      target: Develop
+    
+    # コードを共有
+    volumes:
+      - ./game/src:/app/src
     
     # 仮想端末を有効化
     tty: true

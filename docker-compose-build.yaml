@@ -6,7 +6,7 @@ services:
 
     # ポート
     ports:
-      - "8443:8443"
+      - "8520:8443"
 
     tty: true
 
@@ -53,6 +53,23 @@ services:
     # ビルド対象のdockerfileをしてい
     build:
       context: ./app
+      dockerfile: dockerfile
+      target: release
+
+    # 仮想端末を有効化
+    tty: true
+
+    # 自動起動を有効化
+    restart: always
+
+  # admin コンテナ
+  admin:
+    # ホスト名指定
+    hostname: admin
+
+    # ビルド対象のdockerfileをしてい
+    build:
+      context: ./admin
       dockerfile: dockerfile
       target: release
 
